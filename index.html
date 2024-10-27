@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tapping Names</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.postimg.cc/8f5b8Kg0/first-background.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .text-overlay {
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .action-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+
+        .name-display {
+            margin-top: 15px;
+            font-size: 1.5em;
+            color: white;
+            height: 2em; /* Fixed height for smoother text transition */
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container" id="backgroundContainer">
+        <div class="text-overlay">
+            <h1 id="title">Who’s mum and sister are we tappin 😈🙏</h1>
+            <button class="action-button" id="generateButton">Let’s find out 🏃‍♂️</button>
+            <div id="nameDisplay" class="name-display"></div>
+        </div>
+    </div>
+
+    <script>
+        // Array of random boy names
+        const names = ["Ali", "John", "Michael", "David", "Chris", "James", "Robert", "Daniel", "Paul", "Mark"];
+        
+        document.getElementById('generateButton').onclick = function() {
+            const nameDisplay = document.getElementById('nameDisplay');
+            let interval;
+            
+            // Start the name generation animation
+            interval = setInterval(() => {
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                nameDisplay.innerText = `${randomName}'s mum and sister`;
+            }, 200); // Changes name every 200ms
+
+            // Stop after 4 seconds and display final name
+            setTimeout(() => {
+                clearInterval(interval);
+                nameDisplay.innerText = "Atif’s and Aiman’s 😈🙏";
+                
+                // Change background to the new image
+                document.getElementById('backgroundContainer').style.backgroundImage = "url('https://i.postimg.cc/TyM5jk7X/your-second-image.jpg')";
+                document.getElementById('backgroundContainer').style.backgroundSize = "cover";
+            }, 4000); // 4 seconds
+        };
+    </script>
+</body>
+</html>
